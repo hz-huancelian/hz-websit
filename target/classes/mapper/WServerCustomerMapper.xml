@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.websit.mapper.WServerCustomerMapper">
+    <select id="findListByCondition" resultType="com.hz.websit.vo.WServerCustomerVo">
+        SELECT
+        wc.id,
+        wc.imgUrl,
+        wc.logo,
+        wc.server_type serverType,
+        sr.dict_val serverTypeVal,
+        wc.routerUrl,
+        wc.enter_name enterName,
+        wc.title,
+        wc.content,
+        wc.server_desc serverDesc,
+        wc.comment,
+        wc.sort,
+        wc.desc_sign descSign,
+        wc.createTime
+        from w_server_customer wc
+        left join t_sys_dict sr on sr.parent_dict_key = 1001 and sr.dict_key = wc.server_type
+        <where>
+            <if test="1 == 1">
+                and wc.del_flag = '0'
+            </if>
+        </where>
+        order by wc.sort asc
+    </select>
+</mapper>

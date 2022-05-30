@@ -1,0 +1,62 @@
+#web\u5BB9\u5668\u914D\u7F6E
+server:
+  port: 9095
+  servlet:
+    context-path: /api
+  tomcat:
+    uri-encoding: UTF-8
+#spring\u914D\u7F6E    
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    com.mysql.cj.jdbc.Driver: com.mysql.jdbc.Driver
+    url: jdbc:mysql://8.136.159.136/hz_db_web?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Hongkong&allowMultiQueries=true
+    username: administrator
+    password: 156156Qpzmxzz
+    druid:
+      initial-size: 10
+      max-active: 50
+      min-idle: 10
+      max-wait: -1
+      min-evictable-idle-time-millis: 30000
+      max-evictable-idle-time-millis: 30000
+      time-between-eviction-runs-millis: 0
+      validation-query: select 1
+      validation-query-timeout: -1
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      pool-prepared-statements: true
+      max-open-prepared-statements: 100
+      share-prepared-statements: true
+#mybatis-plus \u914D\u7F6E
+mybatis-plus:
+  global-config:
+    banner: false
+  configuration:
+    #\u4E0D\u52A0\u8FD9\u4E2A\u67E5\u8BE2\u6570\u636E\u4E3A\u7A7A\u65F6\uFF0C\u5B57\u6BB5\u5C06\u88AB\u9690\u85CF
+    call-setters-on-nulls: true
+    jdbc-type-for-null: null
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#\u65E5\u5FD7\u914D\u7F6E
+logging:
+  level:
+    root: info
+    org:
+      springframework: info
+    com:
+      hz:
+        websit: debug
+
+video:
+  upload:
+    url: /data/wwwofficeroot/uploadFile/video
+
+file:
+  upload:
+    url: /data/wwwofficeroot/uploadFile/img

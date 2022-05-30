@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.websit.mapper.WQuoteBottomMapper">
+
+    <select id="findListByCondition" resultType="com.hz.websit.vo.WQuoteBottomVo">
+        SELECT
+        id,
+        imgUrl,
+        logo,
+        title,
+        content,
+        sort,
+        bottom_sign bottomSign,
+        createTime
+        from w_quote_bottom
+        <where>
+            <if test="1 == 1">
+                and del_flag = '0'
+            </if>
+        </where>
+        order by sort asc
+    </select>
+</mapper>
